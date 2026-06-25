@@ -745,7 +745,7 @@
 <script>
   // ===== LEAD CAPTURE → Google Sheet + email =====
   // Paste your Google Apps Script Web App URL (ends in /exec) between the quotes:
-  const LEAD_ENDPOINT='';
+  const LEAD_ENDPOINT='https://script.google.com/macros/s/AKfycby71wuFV6xd9IDxGeruJfY4Tg1yAXnTrpvQm6EyliWSJxxEBoI9dKcW3-WF76cWRWpkIw/exec';
   function sendLead(data){
     if(!LEAD_ENDPOINT)return Promise.resolve();
     return fetch(LEAD_ENDPOINT,{
