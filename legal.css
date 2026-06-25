@@ -1,0 +1,52 @@
+/* Shared styles for TREVOC legal / about pages */
+:root{
+  --gold:#bd9b5f;--gold-deep:#a07e44;--gold-soft:#e3d2ac;
+  --ink:#16140f;--charcoal:#211e18;--cream:#f6f1e7;--paper:#fbf8f1;
+  --body:#39352d;--muted:#6f6757;--line:rgba(189,155,95,.28);
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',-apple-system,Helvetica,Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:17px;scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--paper);color:var(--body);font-weight:400;line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:var(--gold-deep);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{width:min(820px,90vw);margin-inline:auto}
+
+/* header */
+header{position:sticky;top:0;z-index:10;background:rgba(251,248,241,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;width:min(1180px,92vw);margin-inline:auto;padding:1rem 0}
+.nav .logo img{height:40px;width:auto}
+.nav .back{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);display:inline-flex;align-items:center;gap:.5rem}
+.nav .back:hover{color:var(--gold-deep);text-decoration:none}
+
+/* page head */
+.phead{background:var(--ink);color:var(--cream);padding:clamp(3rem,8vh,5rem) 0 clamp(2.5rem,6vh,4rem)}
+.phead .eyebrow{font-size:.72rem;letter-spacing:.36em;text-transform:uppercase;color:var(--gold-soft);display:block;margin-bottom:1rem}
+.phead h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.1;color:#fff}
+.phead h1 em{font-style:italic;color:var(--gold-soft)}
+.phead .upd{margin-top:1rem;font-size:.82rem;color:#b3a98e;letter-spacing:.02em}
+
+/* body */
+main{padding:clamp(3rem,7vh,5rem) 0 clamp(3rem,8vh,6rem)}
+main h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.5rem,3vw,2rem);color:var(--ink);margin:2.4rem 0 .8rem;line-height:1.2}
+main h2:first-child{margin-top:0}
+main h3{font-family:var(--sans);font-weight:500;font-size:1.05rem;color:var(--ink);margin:1.6rem 0 .4rem}
+main p{margin:.7rem 0;color:#3a362e}
+main ul{margin:.7rem 0 .7rem 1.2rem}
+main li{margin:.45rem 0;color:#3a362e}
+main strong{color:var(--ink);font-weight:500}
+.note{background:var(--cream);border:1px solid var(--line);padding:1.4rem 1.6rem;margin:1.6rem 0;font-size:.95rem}
+.note b{color:var(--gold-deep)}
+.ph{color:#b3742e;background:#fbe7d2;padding:0 .3em;border-radius:2px;font-style:normal}
+.contactcard{background:var(--ink);color:var(--cream);padding:1.8rem 2rem;margin-top:2rem}
+.contactcard h3{color:var(--gold-soft);font-family:var(--sans);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;margin:0 0 1rem}
+.contactcard a{color:#cabfa9}
+.contactcard p{color:#cabfa9;margin:.3rem 0}
+
+/* footer */
+footer{background:#0f0d09;color:#9a917f;padding:3rem 0;text-align:center;font-size:.8rem;letter-spacing:.04em}
+footer .flinks{display:flex;flex-wrap:wrap;justify-content:center;gap:1.4rem;margin-bottom:1.4rem;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase}
+footer .flinks a{color:#9a917f}
+footer .flinks a:hover{color:var(--gold-soft);text-decoration:none}
+footer .rera{color:#8a8170;font-size:.72rem;max-width:680px;margin:0 auto 1rem;line-height:1.6}
+footer .rera b{color:var(--gold-soft);font-weight:400}

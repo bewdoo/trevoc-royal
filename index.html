@@ -402,6 +402,43 @@
     .rv{opacity:1;transform:none}
   }
 </style>
+
+<!-- ============ Meta Pixel ============ -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window,document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','3598440986971121');
+  fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=3598440986971121&ev=PageView&noscript=1" alt="" /></noscript>
+<!-- ============ /Meta Pixel ============ -->
+
+<!-- ============ Google tag (GA4 + Google Ads) — add IDs to activate ============ -->
+<script>
+  // Paste your IDs between the quotes to switch these on:
+  window.GA4_ID='';                 // e.g. 'G-XXXXXXXXXX'   (Google Analytics 4)
+  window.GOOGLE_ADS_ID='';          // e.g. 'AW-XXXXXXXXX'   (Google Ads)
+  window.GOOGLE_ADS_LEAD_LABEL='';  // e.g. 'AbCd-EfGhIj'    (Ads conversion label)
+  (function(){
+    var ids=[window.GA4_ID,window.GOOGLE_ADS_ID].filter(Boolean);
+    if(!ids.length)return;
+    var s=document.createElement('script');s.async=true;
+    s.src='https://www.googletagmanager.com/gtag/js?id='+ids[0];
+    document.head.appendChild(s);
+    window.dataLayer=window.dataLayer||[];
+    window.gtag=function(){dataLayer.push(arguments);};
+    gtag('js',new Date());
+    ids.forEach(function(id){gtag('config',id);});
+  })();
+</script>
+<!-- ============ /Google tag ============ -->
 </head>
 <body>
 
@@ -682,9 +719,10 @@
     <div class="forn"><span class="ln"></span><span class="dot"></span><span class="ln r"></span></div>
 
     <div class="flinks">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms</a>
-      <a href="#">Disclaimer</a>
+      <a href="about.html">About Us</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
+      <a href="disclaimer.html">Disclaimer</a>
       <a href="#enquire">Contact</a>
     </div>
 
@@ -755,6 +793,15 @@
     }).catch(function(){});
   }
   const fval=(f,n)=>f.elements[n]?f.elements[n].value.trim():'';
+  // fire Meta Pixel + Google Analytics/Ads conversion on a lead
+  function trackLead(source){
+    try{ if(window.fbq) fbq('track','Lead',{content_name:source}); }catch(e){}
+    try{ if(window.gtag){
+      if(window.GA4_ID) gtag('event','generate_lead',{source:source});
+      if(window.GOOGLE_ADS_ID&&window.GOOGLE_ADS_LEAD_LABEL)
+        gtag('event','conversion',{send_to:window.GOOGLE_ADS_ID+'/'+window.GOOGLE_ADS_LEAD_LABEL});
+    }}catch(e){}
+  }
 
   // sticky nav
   const hdr=document.getElementById('hdr');
@@ -788,6 +835,7 @@
     e.preventDefault();const f=e.target;
     if(!f.checkValidity()){f.reportValidity();return}
     sendLead({name:fval(f,'name'),phone:fval(f,'phone'),email:fval(f,'email'),config:fval(f,'config'),message:fval(f,'msg'),source:'Main Enquiry Form',page:location.href});
+    trackLead('Main Enquiry Form');
     document.getElementById('note').classList.add('show');
     f.querySelector('button').textContent='Enquiry Received ✓';
     setTimeout(()=>f.reset(),300);
@@ -824,6 +872,7 @@
       e.preventDefault();const f=e.target;
       if(!f.checkValidity()){f.reportValidity();return}
       sendLead({name:fval(f,'name'),phone:fval(f,'phone'),config:fval(f,'config'),source:'Popup — Price List',page:location.href});
+      trackLead('Popup — Price List');
       document.getElementById('modalNote').classList.add('show');
       f.querySelector('button').textContent='Price List On The Way ✓';
       setTimeout(close,1600);
