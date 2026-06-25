@@ -743,6 +743,19 @@
 </div>
 
 <script>
+  // ===== LEAD CAPTURE → Google Sheet + email =====
+  // Paste your Google Apps Script Web App URL (ends in /exec) between the quotes:
+  const LEAD_ENDPOINT='';
+  function sendLead(data){
+    if(!LEAD_ENDPOINT)return Promise.resolve();
+    return fetch(LEAD_ENDPOINT,{
+      method:'POST',mode:'no-cors',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body:new URLSearchParams(data).toString()
+    }).catch(function(){});
+  }
+  const fval=(f,n)=>f.elements[n]?f.elements[n].value.trim():'';
+
   // sticky nav
   const hdr=document.getElementById('hdr');
   const onScroll=()=>hdr.classList.toggle('solid',window.scrollY>60);
@@ -774,6 +787,7 @@
   document.getElementById('lead').addEventListener('submit',e=>{
     e.preventDefault();const f=e.target;
     if(!f.checkValidity()){f.reportValidity();return}
+    sendLead({name:fval(f,'name'),phone:fval(f,'phone'),email:fval(f,'email'),config:fval(f,'config'),message:fval(f,'msg'),source:'Main Enquiry Form',page:location.href});
     document.getElementById('note').classList.add('show');
     f.querySelector('button').textContent='Enquiry Received ✓';
     setTimeout(()=>f.reset(),300);
@@ -809,8 +823,9 @@
     document.getElementById('modalForm').addEventListener('submit',e=>{
       e.preventDefault();const f=e.target;
       if(!f.checkValidity()){f.reportValidity();return}
+      sendLead({name:fval(f,'name'),phone:fval(f,'phone'),config:fval(f,'config'),source:'Popup — Price List',page:location.href});
       document.getElementById('modalNote').classList.add('show');
-      f.querySelector('button').textContent='Preview Requested ✓';
+      f.querySelector('button').textContent='Price List On The Way ✓';
       setTimeout(close,1600);
     });
   })();
