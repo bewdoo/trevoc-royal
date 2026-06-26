@@ -68,12 +68,16 @@
   }
   header.solid{background:rgba(251,248,241,.92);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);padding:.85rem 0}
   .nav{display:flex;align-items:center;justify-content:space-between}
+  .nav .logo{display:inline-flex;flex-direction:column;gap:4px;align-items:flex-start}
   .nav .logo img{height:46px;transition:.5s var(--ease)}
   header.solid .nav .logo img{height:40px}
   .nav .logo .inv{filter:brightness(0) invert(1);display:block}
   .nav .logo .nrm{display:none}
   header.solid .nav .logo .inv{display:none}
   header.solid .nav .logo .nrm{display:block}
+  .cplabel{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.72);font-weight:400;white-space:nowrap;line-height:1}
+  header.solid .cplabel{color:var(--gold-deep)}
+  @media(max-width:480px){.cplabel{font-size:.5rem;letter-spacing:.08em}}
   .menu{display:flex;gap:2.3rem;align-items:center}
   .menu a{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:#fff;opacity:.85;transition:.3s;position:relative;font-weight:300}
   header.solid .menu a{color:var(--ink)}
@@ -457,6 +461,7 @@
     <a href="#top" class="logo" aria-label="TREVOC Royal Residences">
       <img class="inv" src="images/logo.png" alt="TREVOC Royal Residences" />
       <img class="nrm" src="images/logo.png" alt="TREVOC Royal Residences" />
+      <span class="cplabel">Authorized Channel Partner · Realty Unplugged</span>
     </a>
     <div class="menu" id="menu">
       <a href="#design">Design</a>
