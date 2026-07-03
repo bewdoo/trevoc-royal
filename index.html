@@ -438,7 +438,7 @@
   // Paste your IDs between the quotes to switch these on:
   window.GA4_ID='G-4TZQP488C3';     // Google Analytics 4 (TREVOC stream)
   window.GOOGLE_ADS_ID='AW-18271495559'; // Google Ads (TREVOC Residences)
-  window.GOOGLE_ADS_LEAD_LABEL='';  // e.g. 'AbCd-EfGhIj'    (Ads conversion label)
+  window.GOOGLE_ADS_LEAD_LABEL='YaIvCN2gicocEIfLw4hE';  // Ads conversion label (Submit lead form)
   (function(){
     var ids=[window.GA4_ID,window.GOOGLE_ADS_ID].filter(Boolean);
     if(!ids.length)return;
@@ -824,7 +824,7 @@
     try{ if(window.gtag){
       if(window.GA4_ID){ gtag('event','generate_lead',{source:source}); gtag('event','ads_conversion_submit_lead_form',{source:source}); }
       if(window.GOOGLE_ADS_ID&&window.GOOGLE_ADS_LEAD_LABEL)
-        gtag('event','conversion',{send_to:window.GOOGLE_ADS_ID+'/'+window.GOOGLE_ADS_LEAD_LABEL});
+        gtag('event','conversion',{send_to:window.GOOGLE_ADS_ID+'/'+window.GOOGLE_ADS_LEAD_LABEL,value:1.0,currency:'INR'});
     }}catch(e){}
   }
 
